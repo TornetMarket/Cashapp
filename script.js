@@ -24,23 +24,32 @@ document.addEventListener('DOMContentLoaded', function () {
     const usernameVal = usernameInput.value.trim();
     const passwordVal = passwordInput.value;
 
-    // ‼️  Credential check
-    if (usernameVal !== 'swiping.cc' || passwordVal !== 'Admin!') {
-      alert('Invalid credentials. Please try again.');
-      passwordInput.value = '';
-      return;
-    }
+  loginBtn.addEventListener('click', () => {
+  // Trim whitespace and normalise case for username
+  const usernameVal = usernameInput.value.trim().toLowerCase();
+  const passwordVal = passwordInput.value.trim();   // trim in case of trailing space
 
-    /* Successful login */
-    document.getElementById('user-name-display').textContent = usernameVal;
-    document.getElementById('username-display').textContent   = usernameVal;
+  const validUser = 'swiping.cc';
+  const validPass = 'Admin!';
 
-    document.getElementById('login-screen').classList.add('hidden');
-    document.getElementById('app').classList.remove('hidden');
+  if (usernameVal !== validUser || passwordVal !== validPass) {
+    alert('Invalid credentials. Try:\n  username: swiping.cc\n  password: Admin!');
+    passwordInput.value = '';
+    return;
+  }
 
-    showPage('home-page');
-    passwordInput.value = '';  // clear for security
-  });
+  /* Successful login */
+  document.getElementById('user-name-display').textContent = validUser;
+  document.getElementById('username-display').textContent   = validUser;
+
+  document.getElementById('login-screen').classList.add('hidden');
+  document.getElementById('app').classList.remove('hidden');
+  showPage('home-page');
+
+  // Clear both fields for security
+  usernameInput.value = '';
+  passwordInput.value = '';
+});
 
   /* ───────────────────────────────────────────────
      Navigation (single-page view switching)
