@@ -1,1 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SoberPay</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="status-bar">
+      <span class="time">7:00</span>
+      <span class="pfp"><img src="pfp.png" alt="User" /></span>
+    </div>
+  </header>
 
+  <!-- Main Section -->
+  <main id="app">
+    <!-- Balance Display -->
+    <div class="balance-display">
+      <h1 id="balance">$0</h1>
+    </div>
+
+    <!-- Keypad -->
+    <div class="keypad">
+      <div class="keys">
+        <button>1</button><button>2</button><button>3</button>
+        <button>4</button><button>5</button><button>6</button>
+        <button>7</button><button>8</button><button>9</button>
+        <button>.</button><button>0</button><button id="back">&#9003;</button>
+      </div>
+      <div class="actions">
+        <button class="request">Request</button>
+        <button class="pay">Pay</button>
+      </div>
+    </div>
+
+    <!-- Money Section -->
+    <section class="money-section">
+      <h2>Money</h2>
+      <div class="money-card">
+        <p>Cash balance</p>
+        <h3 id="money-balance">$0.00</h3>
+        <p>Account••7618 &nbsp;&nbsp; Routing••663</p>
+        <button onclick="addMoney()">Add Money</button>
+        <button onclick="withdrawMoney()">Withdraw</button>
+      </div>
+
+      <div class="explore">
+        <div class="tile">Savings</div>
+        <div class="tile">Bitcoin</div>
+        <div class="tile">Stocks</div>
+        <div class="tile">Taxes</div>
+      </div>
+    </section>
+
+    <!-- Card Section -->
+    <section class="card-section">
+      <h2>Card</h2>
+      <div class="card-mockup"></div>
+      <button>Lock Card</button>
+      <button>Copy Number</button>
+    </section>
+  </main>
+
+  <!-- Bottom Nav -->
+  <nav class="bottom-nav">
+    <button>🏠</button>
+    <button>🪪</button>
+    <button class="active">$</button>
+    <button>🔍</button>
+    <button>🕘</button>
+  </nav>
+
+  <script src="script.js"></script>
+</body>
+</html>
