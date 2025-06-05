@@ -62,6 +62,26 @@
       <button>Lock Card</button>
       <button>Copy Number</button>
     </section>
+
+    <!-- Activity Section -->
+<section class="activity-section hidden">
+  <h2>Activity</h2>
+  <div class="transaction-list" id="transaction-list">
+    <!-- Transactions will be inserted here by JS -->
+  </div>
+</section>
+
+<!-- Bank & Card Link Modal -->
+<div id="bankModal" class="modal hidden">
+  <div class="modal-content">
+    <h3>Link a Bank or Card</h3>
+    <input type="text" placeholder="Bank Name" id="bankName">
+    <input type="text" placeholder="Account Number" id="accountNumber">
+    <input type="text" placeholder="Routing Number" id="routingNumber">
+    <button onclick="saveBank()">Link Account</button>
+    <button onclick="toggleModal()">Cancel</button>
+  </div>
+</div>
   </main>
 
   <!-- Bottom Nav -->
