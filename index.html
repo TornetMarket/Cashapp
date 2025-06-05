@@ -1,187 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <title>Bermuda Bank</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="https://img.icons8.com/fluency/48/bermuda-triangle.png"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
 </head>
 <body>
+  <!-- Splash Screen -->
+  <div id="splash">
+    <div class="splash-content">
+      <div class="bermuda-logo">
+        <svg viewBox="0 0 100 100" class="ripple"><circle cx="50" cy="50" r="35"/></svg>
+      </div>
+      <h1>Bermuda Bank</h1>
+      <p>Your Offshore Wallet in the Cloud</p>
+    </div>
+  </div>
+  
   <!-- Login Screen -->
-  <div id="login-screen">
-    <h1>Bermuda Bank</h1>
-    <p class="tagline">Login to continue</p>
-    <input type="text" id="username" placeholder="Username" />
-    <input type="password" id="password" placeholder="Password" />
-    <button id="login-btn">Login</button>
+  <div id="login-screen" class="centered-panel" style="display:none;">
+    <div class="login-logo"><i class="fa-solid fa-water"></i></div>
+    <h2>Sign In</h2>
+    <form id="login-form" autocomplete="off">
+      <input type="text" id="username" placeholder="Username" autocomplete="username" required>
+      <input type="password" id="password" placeholder="Password" autocomplete="current-password" required>
+      <button type="submit" id="login-btn">Login</button>
+    </form>
+    <div id="login-error" class="login-error"></div>
   </div>
 
-  <!-- Main App Container (hidden by default until login) -->
-  <div id="app" class="hidden">
-    <!-- Home Dashboard Page -->
-    <div id="home-page" class="page">
-      <h2>Welcome, <span id="user-name-display">User</span></h2>
-      <div class="balance">
-        <p>Current Balance</p>
-        <h3 id="main-balance">$12,345.67</h3>
-      </div>
-      <div class="quick-actions">
-        <button class="quick-btn" id="add-money">Add Money</button>
-        <button class="quick-btn" id="send-money">Send Money</button>
-      </div>
-    </div>
-
-    <!-- Wallet Page -->
-    <div id="wallet-page" class="page hidden">
-      <h2>Wallet</h2>
-      <div class="wallet-balance">
-        <p>Wallet Balance:</p>
-        <h3 id="wallet-balance-amount">$500.00</h3>
-      </div>
-      <div class="wallet-actions">
-        <input type="number" id="wallet-amount-input" placeholder="Amount" />
-        <button id="wallet-add">Add</button>
-        <button id="wallet-withdraw">Withdraw</button>
-      </div>
-    </div>
-
-    <!-- Transactions Page -->
-    <div id="transactions-page" class="page hidden">
-      <h2>Transactions</h2>
-      <div class="transactions-list">
-        <!-- Example transaction items -->
-        <div class="transaction-item">
-          <div>
-            <p class="transaction-name">Alice</p>
-            <p class="transaction-date">2025-06-01</p>
-          </div>
-          <p class="transaction-amount out">- $50.00</p>
-        </div>
-        <div class="transaction-item">
-          <div>
-            <p class="transaction-name">Bob</p>
-            <p class="transaction-date">2025-05-25</p>
-          </div>
-          <p class="transaction-amount in">+ $250.00</p>
-        </div>
-        <!-- Additional transactions could be listed similarly -->
-      </div>
-    </div>
-
-    <!-- Cards Page -->
-    <div id="cards-page" class="page hidden">
-      <h2>Cards</h2>
-      <div class="card-display">
-        <!-- Digital Card Mockup -->
-        <div class="card">
-          <p class="card-number" id="card-number">1234 5678 9012 3456</p>
-          <div class="card-bottom">
-            <p class="card-name">JOHN DOE</p>
-            <p class="card-expiry">12/34</p>
-          </div>
-        </div>
-        <button id="lock-card-btn">Lock Card</button>
-        <button id="copy-card-btn">Copy Number</button>
-      </div>
-      <p id="card-status" class="card-status unlocked">Card is Unlocked</p>
-    </div>
-
-    <!-- Savings & Insights Page -->
-    <div id="savings-page" class="page hidden">
-      <h2>Savings & Insights</h2>
-      <div class="savings-goals">
-        <div class="goal">
-          <p>Vacation</p>
-          <div class="progress-bar">
-            <div class="progress" style="width: 40%;"></div>
-          </div>
-          <p>$400 / $1000</p>
-        </div>
-        <div class="goal">
-          <p>Emergency Fund</p>
-          <div class="progress-bar">
-            <div class="progress" style="width: 75%;"></div>
-          </div>
-          <p>$750 / $1000</p>
-        </div>
-      </div>
-      <div class="insights">
-        <h3>Monthly Spending</h3>
-        <div class="insight-bar">
-          <p>Food</p>
-          <div class="progress-bar">
-            <div class="progress" style="width: 50%;"></div>
-          </div>
-          <p>50%</</p>
-        </div>
-        <div class="insight-bar">
-          <p>Rent</p>
-          <div class="progress-bar">
-            <div class="progress" style="width: 30%;"></div>
-          </div>
-          <p>30%</p>
-        </div>
-        <div class="insight-bar">
-          <p>Other</p>
-          <div class="progress-bar">
-            <div class="progress" style="width: 20%;"></div>
-          </div>
-          <p>20%</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Crypto Page -->
-    <div id="crypto-page" class="page hidden">
-      <h2>Crypto</h2>
-      <div class="crypto-balances">
-        <div class="crypto-item">
-          <p>Bitcoin</p>
-          <h3 id="btc-balance">0.5 BTC</h3>
-          <p id="btc-usd" class="crypto-usd">$15,000.00</p>
-          <button class="crypto-btn crypto-buy" data-coin="btc">Buy</button>
-          <button class="crypto-btn crypto-sell" data-coin="btc">Sell</button>
-        </div>
-        <div class="crypto-item">
-          <p>Ethereum</p>
-          <h3 id="eth-balance">10 ETH</h3>
-          <p id="eth-usd" class="crypto-usd">$20,000.00</p>
-          <button class="crypto-btn crypto-buy" data-coin="eth">Buy</button>
-          <button class="crypto-btn crypto-sell" data-coin="eth">Sell</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Settings Page -->
-    <div id="settings-page" class="page hidden">
-      <h2>Settings</h2>
-      <div class="profile-section">
-        <div class="avatar" id="avatar"></div>
-        <p id="username-display">User</p>
-      </div>
-      <div class="settings-options">
-        <div class="option">
-          <label for="theme-toggle">Light Mode:</label>
-          <input type="checkbox" id="theme-toggle" />
-        </div>
-        <div class="option">
-          <button id="logout-btn">Logout</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Bottom Navigation Bar -->
-    <div id="nav-bar">
-      <button class="nav-btn" data-target="home-page">🏠 Home</button>
-      <button class="nav-btn" data-target="wallet-page">💰 Wallet</button>
-      <button class="nav-btn" data-target="transactions-page">🔄 Transactions</button>
-      <button class="nav-btn" data-target="cards-page">💳 Cards</button>
-      <button class="nav-btn" data-target="savings-page">🏦 Savings</button>
-      <button class="nav-btn" data-target="crypto-page">₿ Crypto</button>
-      <button class="nav-btn" data-target="settings-page">⚙️ Settings</button>
-    </div>
+  <!-- Main App (hidden by default) -->
+  <div id="app" style="display:none;">
+    <div id="main-view"></div>
+    <nav id="bottom-nav">
+      <button data-page="home"><i class="fa-solid fa-house"></i><span>Home</span></button>
+      <button data-page="wallet"><i class="fa-solid fa-wallet"></i><span>Wallet</span></button>
+      <button data-page="crypto"><i class="fa-brands fa-bitcoin"></i><span>Crypto</span></button>
+      <button data-page="profile"><i class="fa-solid fa-user"></i><span>Profile</span></button>
+      <button data-page="settings"><i class="fa-solid fa-gear"></i><span>Settings</span></button>
+    </nav>
   </div>
 
+  <!-- Modals / Toast -->
+  <div id="modal-backdrop" style="display:none;"></div>
+  <div id="modal" style="display:none;"></div>
+  <div id="toast"></div>
+  
   <script src="script.js"></script>
 </body>
 </html>
